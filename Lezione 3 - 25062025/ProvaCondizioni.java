@@ -42,5 +42,34 @@ public class ProvaCondizioni {
         // altrimenti viene assegnato "Buonasera"
         // Questo è un modo compatto per scrivere un'istruzione if-else
         System.out.println(result);
+         //provo lo switch
+        int day = 4; // Definisco una variabile day con un valore intero
+        switch(day){
+            case 1:
+                System.out.println("Lunedì"); // Se day è 1, stampa "Lunedì"
+                break; // Esce dallo switch
+            case 2:
+                System.out.println("Martedì"); // Se day è 2, stampa "Martedì"
+                break; // Esce dallo switch
+            case 3:
+                System.out.println("Mercoledì"); // Se day è 3, stampa "Mercoledì"
+                break; // Esce dallo switch
+            case 4:
+                System.out.println("Giovedì"); // Se day è 4, stampa "Giovedì"
+                break; // Esce dallo switch
+            case 5:
+                System.out.println("Venerdì"); // Se day è 5, stampa "Venerdì"
+                break; // Esce dallo switch
+            case 6:
+                System.out.println("Sabato"); // Se day è 6, stampa "Sabato"
+                break; // Esce dallo switch
+            case 7:
+                System.out.println("Domenica"); // Se day è 7, stampa "Domenica"
+                break; // Esce dallo switch
+            default: // Caso predefinito se nessuno dei precedenti corrisponde
+                System.out.println("Giorno non valido"); // Se day non corrisponde a nessun caso, stampa "Giorno non valido"
+                break; // Esce dallo switch 
+            // Nota: Il case "default" è opzionale e viene eseguito se nessun altro caso corrisponde
+        }
     }
 }
