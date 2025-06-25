@@ -70,6 +70,9 @@ public class ProvaCondizioni {
                 System.out.println("Giorno non valido"); // Se day non corrisponde a nessun caso, stampa "Giorno non valido"
                 break; // Esce dallo switch 
             // Nota: Il case "default" è opzionale e viene eseguito se nessun altro caso corrisponde
+
+
+            //prova github!
         }
     }
 }
