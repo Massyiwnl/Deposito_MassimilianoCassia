@@ -93,7 +93,7 @@ class Library {
             System.out.println("-------------------");
         }
     }
-
+/* 
     void borrowBook(String title) { //Permette di prendere in prestito un libro
         for (Book book : books) { //Scorre la lista di libri
             if (book.title.equalsIgnoreCase(title) && book.isAvailable) { //Controlla se il titolo corrisponde e se il libro è disponibile
@@ -104,7 +104,9 @@ class Library {
         }
         System.out.println("Libro non disponibile o non trovato: " + title); //Messaggio se il libro non è disponibile o non esiste
     }
+    */
     //Questo metodo si occupa solo di aggiornare lo stato del libro nella biblioteca, rendendolo nuovamente disponibile. Non controlla chi lo ha restituito, non gestisce utenti, fa solo la parte "biblioteca"
+   /* 
     void returnBook(String title) { //Permette di restituire un libro
         for (Book book : books) { //Scorre la lista di libri
             if (book.title.equalsIgnoreCase(title)) { //Controlla se il titolo corrisponde
@@ -115,7 +117,7 @@ class Library {
         }
         System.out.println("Libro non trovato: " + title); //Messaggio se il libro non esiste
     }
-
+ */
     void searchBook(String keyword) { //Permette di cercare un libro per titolo o autore
         boolean trovato = false; //Variabile per controllare se il libro è stato trovato
         for (Book book : books) { //Scorre la lista di libri
@@ -168,7 +170,7 @@ class User {
             if (book.isRitardo) { // Controlla se il libro è in ritardo
                 System.out.println("ATTENZIONE: Il libro è stato restituito in ritardo. Potresti ricevere una penalità.");
             }
-            library.returnBook(title);
+            book.isAvailable = true; //Segna il libro come disponibile
             borrowedBooks.remove(book);
             book.isRitardo = false; // Resetta lo stato di ritardo
             System.out.println("Hai restituito: " + book.title);
