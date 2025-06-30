@@ -19,6 +19,10 @@ class Studente{
         this.nome = nome; // Inizializza il nome dello studente
         totaleStudenti++; // Incrementa il conteggio degli studenti ogni volta che viene creato un nuovo oggetto Studente
     } 
+//metodo per stampare il contatore, senza riportarlo sempre
+    static int getTotaleStudenti(){
+        return Studente.totaleStudenti; // Restituisce il numero totale di studenti
+    }
 }
 
 public class EsempioClassi {
@@ -42,7 +46,7 @@ public class EsempioClassi {
         Studente studente2 = new Studente("Bob"); // Creazione di un altro oggetto Studente con nome "Bob"
         Studente studente3 = new Studente("Charlie"); // Creazione di un altro oggetto Studente con nome "Charlie"
         // Stampa del numero totale di studenti creati
-        System.out.println("Totale studenti: " + Studente.totaleStudenti);
+        System.out.println("Totale studenti creati: " + Studente.getTotaleStudenti()); // Chiamata al metodo statico getTotaleStudenti per ottenere il numero totale di studenti
         // Il numero totale di studenti è una variabile statica, quindi può essere accessibile senza creare un oggetto Studente
         // In questo caso, Studente.totaleStudenti è accessibile direttamente dalla classe  Studente, senza bisogno di un'istanza specifica.
     }
