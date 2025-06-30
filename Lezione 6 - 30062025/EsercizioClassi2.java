@@ -70,7 +70,7 @@ public class EsercizioClassi2 {
         BankAccount account3 = new BankAccount("Luigino", "evvai", 0.0);
         //account1.accountHolderName = "Mario";
         //account1.password = "1234";
-        //account1.balance = 100.0;
+        //account1.balance = 100.0; invece che andare a fare questa roba qui, mi basta un semplice costruttore che mi permette di passare i parametri direttamente
         accounts.add(account1);
         accounts.add(account2);
         accounts.add(account3);
