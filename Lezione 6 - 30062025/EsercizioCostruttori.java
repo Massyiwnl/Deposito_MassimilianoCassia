@@ -21,6 +21,11 @@ class Persona {
         System.out.println("Età: " + eta);
         System.out.println("Città: " + citta);
     }
+
+    // Faccio un metodo per modificare la città
+    void setCitta(String citta) {
+        this.citta = citta; // Imposta la città della persona
+    }
 }
 
 public class EsercizioCostruttori {
@@ -31,7 +36,7 @@ public class EsercizioCostruttori {
 
         // Creazione di un altro oggetto Persona
         Persona persona2 = new Persona("Luigi", 25); // Crea un altro oggetto Persona con nome "Luigi" e età 25
-        persona2.citta = "Roma"; // Modifica della città per il secondo oggetto
+        persona2.setCitta("Roma"); // Modifica la città della seconda persona a "Roma"
         persona2.mostraInfo(); // Visualizza le informazioni del secondo oggetto
     }
     
