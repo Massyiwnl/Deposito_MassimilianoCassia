@@ -25,7 +25,21 @@ class Studente{
     }
 }
 
-public class EsempioClassi {
+class Calcolatore{
+    //Metodo con ritorno
+    int somma(int a, int b){
+        return a + b; // Restituisce la somma di a e b
+    }
+}
+
+class Salutiamo{
+    void saluta(){
+        System.out.println("Ciao, benvenuto!"); // Stampa un messaggio di saluto
+    }
+}
+
+
+public class ProvaClassi {
     public static void main(String[] args) {
         Auto auto1 = new Auto(); // Creazione di un oggetto Auto
         auto1.marca = "Fiat"; // Assegnazione del valore alla proprietà marca
@@ -49,5 +63,13 @@ public class EsempioClassi {
         System.out.println("Totale studenti creati: " + Studente.getTotaleStudenti()); // Chiamata al metodo statico getTotaleStudenti per ottenere il numero totale di studenti
         // Il numero totale di studenti è una variabile statica, quindi può essere accessibile senza creare un oggetto Studente
         // In questo caso, Studente.totaleStudenti è accessibile direttamente dalla classe  Studente, senza bisogno di un'istanza specifica.
+
+        // Esempio di utilizzo della classe Calcolatore e Salutiamo
+        Calcolatore calc = new Calcolatore(); // Crea un oggetto Calcolatore
+        Salutiamo saluto = new Salutiamo(); // Crea un oggetto Salutiamo
+        saluto.saluta(); // Chiama il metodo saluta dell'oggetto Salutiamo
+        int risultato = calc.somma(5, 10); // Chiama il metodo somma dell'oggetto Calcolatore con i valori 5 e 10
+        System.out.println("La somma è: " + risultato); // Stampa il risultato della somma
+    
     }
 }
