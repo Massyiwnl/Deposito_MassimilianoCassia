@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 class Auto{
     String marca;
     int anno;
@@ -7,6 +8,13 @@ class Auto{
         System.out.println("Marca: " + marca);
         System.out.println("Anno: " + anno);
         System.out.println("Prezzo: " + prezzo);
+    }
+
+    //Costruttore della classe Auto
+    Auto(String marca, int anno, double prezzo) {
+        this.marca = marca; // Inizializza la marca dell'auto
+        this.anno = anno; // Inizializza l'anno dell'auto
+        this.prezzo = prezzo; // Inizializza il prezzo dell'auto
     }
 }
 
@@ -41,17 +49,17 @@ class Salutiamo{
 
 public class ProvaClassi {
     public static void main(String[] args) {
-        Auto auto1 = new Auto(); // Creazione di un oggetto Auto
-        auto1.marca = "Fiat"; // Assegnazione del valore alla proprietà marca
-        auto1.anno = 2020; // Assegnazione del valore alla proprietà anno
-        auto1.prezzo = 15000.0; // Assegnazione del valore alla proprietà prezzo
+        Auto auto1 = new Auto("Fiat", 2020, 20000); // Creazione di un oggetto Auto
+        //auto1.marca = "Fiat"; // Assegnazione del valore alla proprietà marca
+        //auto1.anno = 2020; // Assegnazione del valore alla proprietà anno
+        //auto1.prezzo = 15000.0; // Assegnazione del valore alla proprietà prezzo
 
         auto1.mostraInfo(); // Chiamata al metodo mostraInfo per visualizzare le informazioni dell'auto
 
-        Auto auto2 = new Auto(); // Creazione di un altro oggetto Auto
-        auto2.marca = "Toyota"; // Assegnazione del valore alla proprietà marca
-        auto2.anno = 2021; // Assegnazione del valore alla proprietà anno
-        auto2.prezzo = 20000.0; // Assegnazione del valore alla proprietà prezzo
+        Auto auto2 = new Auto("Audi", 2021, 40000); // Creazione di un altro oggetto Auto
+        //auto2.marca = "Toyota"; // Assegnazione del valore alla proprietà marca
+        //auto2.anno = 2021; // Assegnazione del valore alla proprietà anno
+        //auto2.prezzo = 20000.0; // Assegnazione del valore alla proprietà prezzo
 
         auto2.mostraInfo(); // Chiamata al metodo mostraInfo per visualizzare le informazioni della seconda auto
 
@@ -70,6 +78,20 @@ public class ProvaClassi {
         saluto.saluta(); // Chiama il metodo saluta dell'oggetto Salutiamo
         int risultato = calc.somma(5, 10); // Chiama il metodo somma dell'oggetto Calcolatore con i valori 5 e 10
         System.out.println("La somma è: " + risultato); // Stampa il risultato della somma
-    
+
+        // Creazione di una lista di oggetti Auto (utilizzando ArrayList)
+        // Utilizzo di ArrayList per gestire una lista dinamica di oggetti Auto
+        ArrayList<Auto> autoList = new ArrayList<>(); // Crea una lista di oggetti Auto
+        autoList.add(new Auto("Tesla", 2023, 20000)); // Aggiunge il primo oggetto Auto alla lista
+        autoList.add(new Auto("Ford", 2020, 20000)); // Aggiunge il secondo oggetto Auto alla lista
+
+        for (Auto auto : autoList) { // Itera attraverso la lista di auto
+            System.out.println("Marca: " + auto.marca + ", Anno: " + auto.anno + ", Prezzo: " + auto.prezzo); // Stampa le informazioni di ogni auto nella lista
+        }
+        //lista di tutte le auto (stampando nome)
+        System.out.println("Lista delle auto:");
+        for (Auto auto : autoList) { // Itera attraverso la lista di auto   
+            System.out.println(auto.marca); // Stampa la marca di ogni auto nella lista
+        }
     }
 }
