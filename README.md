@@ -33,10 +33,10 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
 ## 🗂️ Struttura della repository
 
 ```plaintext
-📁 Lezione1/     --> 
-📁 Lezione2/     -->
+📁 Lezione1/     --> Introduzione
+📁 Lezione2/     --> Casting, Operatori, Scanner, Stringhe, Variabili, System
 📁 Lezione3/     --> 
-📁 Lezione4/     --> Gestione delle eccezioni
+📁 Lezione4/     --> 
 📁 Lezione5/     -->
 📁 Lezione6/     --> 
 📄 README.md     --> Questo file
