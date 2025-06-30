@@ -22,9 +22,14 @@ class Persona {
         System.out.println("Città: " + citta);
     }
 
-    // Faccio un metodo per modificare la città
-    void setCitta(String citta) {
-        this.citta = citta; // Imposta la città della persona
+
+    //Faccio un metodo più particolare per modificare la città, se voglio 
+    void setCitta(String citta, boolean conferma) {
+        if (conferma) {
+            this.citta = citta; // Imposta la città della persona solo se confermato
+        } else {
+            System.out.println("Modifica della città annullata.");
+        }
     }
 }
 
@@ -32,11 +37,12 @@ public class EsercizioCostruttori {
     public static void main(String[] args) {
         // Creazione di un oggetto Persona utilizzando il costruttore
         Persona persona1 = new Persona("Mario", 30); // Crea un oggetto Persona con nome "Mario" e età 30
+        persona1.setCitta("Milano", false); // Modifica la città della persona a "Milano" con conferma
         persona1.mostraInfo(); // Chiamata al metodo per visualizzare le informazioni della persona
-
+        System.out.println( "");
         // Creazione di un altro oggetto Persona
         Persona persona2 = new Persona("Luigi", 25); // Crea un altro oggetto Persona con nome "Luigi" e età 25
-        persona2.setCitta("Roma"); // Modifica la città della seconda persona a "Roma"
+        persona2.setCitta("Roma", true); // Modifica la città della seconda persona a "Roma" con conferma
         persona2.mostraInfo(); // Visualizza le informazioni del secondo oggetto
     }
     
