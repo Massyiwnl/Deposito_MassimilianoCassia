@@ -104,7 +104,7 @@ class Library {
         }
         System.out.println("Libro non disponibile o non trovato: " + title); //Messaggio se il libro non è disponibile o non esiste
     }
-
+    //Questo metodo si occupa solo di aggiornare lo stato del libro nella biblioteca, rendendolo nuovamente disponibile. Non controlla chi lo ha restituito, non gestisce utenti, fa solo la parte "biblioteca"
     void returnBook(String title) { //Permette di restituire un libro
         for (Book book : books) { //Scorre la lista di libri
             if (book.title.equalsIgnoreCase(title)) { //Controlla se il titolo corrisponde
@@ -161,6 +161,7 @@ class User {
         }
     }
 
+    //Questo metodo gestisce il fatto che l'utente vuole restituire un libro.
     void returnBook(Library library, String title) {
     for (Book book : borrowedBooks) {
         if (book.title.equalsIgnoreCase(title)) {
