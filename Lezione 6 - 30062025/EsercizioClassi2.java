@@ -1,17 +1,11 @@
 /*Definire una Classe BankAccount e
 Implementare Deposito & Prelievo
-
 Crea una classe BankAccount con:
-
 String accountHolderName (Nome del titolare dell'account)
 double balance (Saldo)
-
 Metodo void deposit(double amount) per effettuare un deposito
-
 Metodo void withdraw(double amount) per effettuare un prelievo
-
 Metodo void displayBalance() per mostrare il saldo attuale
-
 Assicurati che il prelievo non consenta un saldo negativo.
 
 Extra: andare a creare un arraylist di account tra cui scegliere in
