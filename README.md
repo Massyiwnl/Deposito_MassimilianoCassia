@@ -3,7 +3,7 @@
 
 Benvenuto nel mio **Deposito Java**, una raccolta di esercizi, progetti ed esempi realizzati durante il corso in **Java**! 🚀
 
----
+
 
 ## 📚 Contenuto della repository
 
@@ -28,7 +28,7 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
   - DevOps
    **WORK IN PROGRESS**
 
----
+
 
 ## 🗂️ Struttura della repository
 
