@@ -31,7 +31,7 @@ class Officina {
 
 public class EsercizioFinaleOggetti {
     public static void main(String[] args) {
-
+        
         Scanner scanner = new Scanner(System.in); // Scanner per input da tastiera
         Officina officina = new Officina(); // Creazione dell'officina
 
