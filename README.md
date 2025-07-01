@@ -39,5 +39,6 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
 📁 Lezione5/     --> Funzioni
 📁 Lezione6/     --> Classi e oggetti
    📁 Lezione6/Progetto Biblioteca/    --> Progetto di una biblioteca usando tutto quello visto
+📁 Lezione7/     --> Incapsulamento 
 📄 README.md     --> Questo file
 
