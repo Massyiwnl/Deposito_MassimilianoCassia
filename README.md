@@ -1,4 +1,3 @@
-# Deposito_MassimilianoCassia
 # ☕ Corso Java - Deposito Massimiliano Cassia
 
 Benvenuto nel mio **Deposito Java**, una raccolta di esercizi, progetti ed esempi realizzati durante il corso in **Java**! 🚀
