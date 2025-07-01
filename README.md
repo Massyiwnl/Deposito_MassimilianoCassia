@@ -35,9 +35,10 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
 ```plaintext
 📁 Lezione1/     --> Introduzione
 📁 Lezione2/     --> Casting, Operatori, Scanner, Stringhe, Variabili, System
-📁 Lezione3/     --> 
-📁 Lezione4/     --> 
-📁 Lezione5/     -->
-📁 Lezione6/     --> 
+📁 Lezione3/     --> Condizioni e cicli
+📁 Lezione4/     --> Array e ArrayList
+📁 Lezione5/     --> Funzioni
+📁 Lezione6/     --> Classi e oggetti
+   📁 Lezione6/Progetto Biblioteca/    --> Progetto di una biblioteca usando tutto quello visto
 📄 README.md     --> Questo file
 
