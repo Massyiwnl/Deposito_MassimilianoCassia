@@ -1,11 +1,8 @@
 /*
  * Esercizio:
-
-
 Creare una classe Persona(nome nel costruttore) che ha un
 metodo Saluta() con un saluto. Creare due oggetti che
 salutano nel main.
-
 
 Creare una classe Pirata che eredita Persona Modificando il
 Saluto dichiarando di essere un pirata. Quindi creare un
