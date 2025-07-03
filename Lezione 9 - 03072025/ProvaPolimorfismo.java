@@ -22,7 +22,7 @@ class Dog extends Animal {
 
   } }
 
-class Main {
+class ProvaPolimorfismo {
 
   public static void main(String[] args) {
 
