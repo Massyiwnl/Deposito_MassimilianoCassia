@@ -34,6 +34,8 @@ Stampa l’output.
 
 //Classe base Camera
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 class Camera{
     private int numero;
@@ -162,57 +164,118 @@ class Hotel{
 
 public class EsercizioEreditarieta2 {
     public static void main(String[] args) {
-        System.out.println("=== SISTEMA GESTIONE HOTEL ===\n");
-        
-        // Crea un hotel
-        Hotel hotel = new Hotel("Grand Hotel Roma");
-        
-        // Crea camere normali
-        Camera camera1 = new Camera(101, 120.50f);
-        Camera camera2 = new Camera(102, 95.00f);
-        
-        // Crea suite
-        Suite suite1 = new Suite(201, 250.00f, "Jacuzzi, Minibar, Vista mare");
-        Suite suite2 = new Suite(202, 300.00f, "Terrazza privata, Servizio in camera 24h");
-        
-        // Aggiungi camere all'hotel
-        hotel.aggiungiCamera(camera1);
-        hotel.aggiungiCamera(camera2);
-        hotel.aggiungiCamera(suite1);
-        hotel.aggiungiCamera(suite2);
-        
-        // Stampa dettagli dell'hotel
-        hotel.stampaDettagliHotel();
-        
-        // Test dell'overload del metodo dettagli()
-        System.out.println("\n=== TEST OVERLOAD METODO DETTAGLI ===");
-        System.out.println("Camera normale - dettagli() senza parametri:");
-        camera1.dettagli();
-        
-        System.out.println("\nCamera normale - dettagli(false) senza prezzo:");
-        camera1.dettagli(false);
-        
-        System.out.println("\nSuite - dettagli() senza parametri:");
-        suite1.dettagli();
-        
-        System.out.println("\nSuite - dettagli(false) senza prezzo:");
-        suite1.dettagli(false);
-        
-        // Usa il metodo statico per contare le suite
-        int numeroSuite = Hotel.contaSuite(hotel.getCamere());
-        System.out.println("\n=== STATISTICHE HOTEL ===");
-        System.out.println("Numero totale di camere: " + hotel.getCamere().size());
-        System.out.println("Numero di suite: " + numeroSuite);
-        System.out.println("Numero di camere standard: " + (hotel.getCamere().size() - numeroSuite));
-        
-        // Test aggiuntivi per dimostrare le funzionalità
-        System.out.println("\n=== TEST MODIFICA ATTRIBUTI ===");
-        System.out.println("Modifica prezzo camera 101...");
-        camera1.setPrezzo(130.00f);
-        camera1.dettagli();
-        
-        System.out.println("\nModifica servizi extra suite 201...");
-        suite1.setServiziExtra("Jacuzzi, Minibar, Vista mare, Colazione in camera");
-        suite1.dettagli();
+        Scanner sc = new Scanner(System.in);
+        Hotel hotel = new Hotel("Grand Hotel Roma"); 
+
+        int scelta;
+        do {
+            System.out.println("\n--- GESTIONE HOTEL ---");
+            System.out.println("1. Aggiungi Camera");
+            System.out.println("2. Aggiungi Suite");
+            System.out.println("3. Stampa dettagli camere");
+            System.out.println("4. Conta Suite");
+            System.out.println("5. Modifica Prezzo Camera");
+            System.out.println("6. Modifica Servizi Extra Suite");
+            System.out.println("7. Esci");
+            System.out.print("Scegli un'opzione: ");
+
+            try {
+                scelta = sc.nextInt();
+                sc.nextLine(); // Consuma newline
+
+                switch (scelta) {
+                    case 1:
+                        System.out.print("Numero camera: ");
+                        int numCam = sc.nextInt();
+                        System.out.print("Prezzo camera: ");
+                        float prezzoCam = sc.nextFloat();
+                        hotel.aggiungiCamera(new Camera(numCam, prezzoCam));
+                        break;
+
+                    case 2:
+                        System.out.print("Numero suite: ");
+                        int numSuite = sc.nextInt();
+                        System.out.print("Prezzo suite: ");
+                        float prezzoSuite = sc.nextFloat();
+                        sc.nextLine();
+                        System.out.print("Servizi extra suite: ");
+                        String serviziExtra = sc.nextLine();
+                        hotel.aggiungiCamera(new Suite(numSuite, prezzoSuite, serviziExtra));
+                        break;
+
+                    case 3:
+                        hotel.stampaDettagliHotel();
+                        break;
+
+                    case 4:
+                        int totaleSuite = Hotel.contaSuite(hotel.getCamere());
+                        System.out.println("Numero di suite presenti: " + totaleSuite);
+                        break;
+
+                    case 5:
+                        System.out.print("Inserisci numero camera da modificare: ");
+                        int modificaCameraInt = sc.nextInt();
+                        System.out.print("Nuovo prezzo: ");
+                        float nuovoPrezzo = sc.nextFloat();
+
+                        boolean trovata = false;
+                        for (Camera cm : hotel.getCamere()) {
+                            if (cm.getNumero() == modificaCameraInt) {
+                                cm.setPrezzo(nuovoPrezzo);
+                                System.out.println("Prezzo modificato con successo!");
+                                trovata = true;
+                                break;
+                            }
+                        }
+                        if (!trovata)
+                            System.out.println("Camera non trovata!");
+                        break;
+
+                    case 6:
+                        System.out.print("Inserisci numero suite da modificare: ");
+                        int modificaSuiteInt= sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Nuovi servizi extra: ");
+                        String nuoviServizi = sc.nextLine();
+
+                        trovata = false;
+                        for (Camera cm : hotel.getCamere()) {
+                            if (cm instanceof Suite && cm.getNumero() == modificaSuiteInt) {
+                                ((Suite) cm).setServiziExtra(nuoviServizi); //la variabile cm, dichiarata come tipo Camera, viene temporaneamente convertita in tipo Suite attraverso 
+                                                                            //il casting esplicito (Suite). Questo è necessario perché il metodo setServiziExtra() 
+                                                                            //è definito solo nella classe Suite e non nella classe padre Camera
+                                                                            //Questa operazione è sicura solo se prima si è verificato con instanceof che l'oggetto sia effettivamente una Suite, 
+                                                                            //come avviene in questo caso
+                                System.out.println("Servizi extra modificati con successo!");
+                                trovata = true;
+                                break;
+                            }
+                        }
+                        if (!trovata)
+                            System.out.println("Suite non trovata!");
+                        break;
+
+                    case 7:
+                        System.out.println("Uscita dal programma.");
+                        break;
+
+                    default:
+                        System.out.println("Opzione non valida. Riprova.");
+                        break;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Input non valido. Inserire il tipo di dato corretto.");
+                sc.nextLine(); // Consuma input errato
+                scelta = 0; // Reimposta scelta per continuare il ciclo
+            } catch (Exception e) {
+                System.out.println("Errore generico: " + e.getMessage());
+                sc.nextLine(); // Consuma eventuale input errato
+                scelta = 0;
+            }
+
+        } while (scelta != 7);
+
+        sc.close();
     }
 }
