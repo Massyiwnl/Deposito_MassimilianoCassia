@@ -87,7 +87,7 @@ public class Esercizio2Singleton {
                 // Se l'utente inserisce un input non numerico, imposta scelta a 0 (scelta non valida)
                 scelta = 0;
             }
-
+            
             //Switch per eseguire la funzione scelta dall'utente
             switch (scelta) {
                 //Crea o ottiene l'istanza singleton del DatabaseManager
@@ -134,7 +134,7 @@ public class Esercizio2Singleton {
                     System.out.println("Scelta non valida.");
             }
         } while (scelta != 5); // Continua finché l'utente non sceglie 5
-        
+
         sc.close();
     }
 }
