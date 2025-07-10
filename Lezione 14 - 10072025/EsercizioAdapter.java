@@ -46,6 +46,7 @@ class SocketAdapter implements EuropeanSocket {
 }
 
 // Classe reale: rappresenta una lampada europea che usa una presa europea
+//classe reale che ti permette di testare e vedere il funzionamento pratico dell’Adapter
 class EuropeanLamp {
     private EuropeanSocket socket; // Presa europea (adapter)
 
