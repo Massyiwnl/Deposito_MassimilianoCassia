@@ -25,7 +25,7 @@ interface EuropeanSocket {
 class AmericanSocket {
     // Metodo specifico delle prese americane per fornire corrente
     public void provideElectricity() {
-        System.out.println("Elettricità fornita da presa americana (110V)");
+        System.out.println("Elettricità fornita da presa americana");
     }
 }
 
@@ -66,7 +66,7 @@ class EuropeanLamp {
 // Classe main: test pratico
 public class EsercizioAdapter {
     public static void main(String[] args) {
-        // Creo una presa americana (oggetto preesistente, incompatibile)
+        // Creo una presa americana
         AmericanSocket americanSocket = new AmericanSocket();
 
         // Creo un adapter per adattare la presa americana a standard europeo
