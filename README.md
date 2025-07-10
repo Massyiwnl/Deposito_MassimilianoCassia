@@ -21,13 +21,23 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
     
 - 🛠️ **Programmazione a Oggetti (OOP)**
   - Classi e oggetti
-    **WORK IN PROGRESS**
+  - Incapsulamento
+  - Eccezioni
+  - Ereditarietà
+  - Polimorfismo
+  - Astrazione
+
+- 🎨 **Design Pattern**
+  - Singleton
+  - Observer
+  - Decorator
+  - Strategy
+  - Facade
+  - Factory Method
   
 - ⚡ **Altri concetti**
+  - Funzioni (Metodi)
   - DevOps
-   **WORK IN PROGRESS**
-
-
 
 ## 🗂️ Struttura della repository
 
