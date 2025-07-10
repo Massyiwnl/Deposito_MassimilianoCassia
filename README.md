@@ -56,6 +56,6 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
 📁 Lezione11/     --> Inizio Design Pattern, Singleton
 📁 Lezione12/     --> Observer, Decorator
 📁 Lezione13/     --> Strategy, Facade
-📁 Lezione14/     --> Factory Method
+📁 Lezione14/     --> Factory Method, Adapter
 📄 README.md     --> Questo file
 
