@@ -15,65 +15,66 @@ implementi EuropeanSocket.
 
 Testare l'adattatore collegandolo ad un dispositivo europeo.
  */
-// Interfaccia "target" (presa europea)
+// Interfaccia target: standard europeo
 interface EuropeanSocket {
-    void giveElectricity(); // Metodo che fornisce elettricità secondo lo standard europeo
+    // Metodo che fornisce corrente secondo lo standard europeo
+    void giveElectricity();
 }
 
-// Classe "adaptee" (presa americana, già esistente o esterna)
+// Classe Adaptee: presa americana
 class AmericanSocket {
+    // Metodo specifico delle prese americane per fornire corrente
     public void provideElectricity() {
-        System.out.println("Elettricità fornita da presa americana");
+        System.out.println("Elettricità fornita da presa americana (110V)");
     }
 }
 
-// Adapter: implementa EuropeanSocket e "adatta" una AmericanSocket
+// Adapter: converte la presa americana in europea
 class SocketAdapter implements EuropeanSocket {
-    private AmericanSocket americanSocket; // Mantiene un riferimento alla presa americana
+    private AmericanSocket americanSocket; // Riferimento alla presa americana
 
     // Costruttore: riceve la presa americana da adattare
     public SocketAdapter(AmericanSocket americanSocket) {
         this.americanSocket = americanSocket;
     }
 
-    // Implementa il metodo richiesto da EuropeanSocket,
-    // ma lo fa delegando a provideElectricity() della presa americana
+    // Implementa l'interfaccia europea, ma delega alla presa americana
     public void giveElectricity() {
         System.out.println("Adattatore converte la presa europea a americana...");
         americanSocket.provideElectricity();
     }
 }
 
-// Classe che rappresenta un dispositivo europeo che vuole ricevere corrente
-class EuropeanDevice {
-    private EuropeanSocket socket;
+// Classe reale: rappresenta una lampada europea che usa una presa europea
+class EuropeanLamp {
+    private EuropeanSocket socket; // Presa europea (adapter)
 
-    // Costruttore: riceve una presa europea (o un adapter compatibile)
-    public EuropeanDevice(EuropeanSocket socket) {
+    // Costruttore: riceve la presa (o adapter) su cui collegarsi
+    public EuropeanLamp(EuropeanSocket socket) {
         this.socket = socket;
     }
 
-    // Simula l'uso del dispositivo: richiede corrente tramite la presa europea
-    public void powerOn() {
-        System.out.println("Dispositivo europeo in accensione...");
-        socket.giveElectricity();
-        System.out.println("Dispositivo europeo acceso!\n");
+    // Metodo per accendere la lampada, richiede corrente tramite lo standard europeo
+    public void turnOn() {
+        System.out.println("Accendo la lampada europea...");
+        socket.giveElectricity(); // Usa l'interfaccia europea, adapter farà il resto
+        System.out.println("Lampada accesa!\n");
     }
 }
 
-// MAIN per testare l'adapter
+// Classe main: test pratico
 public class EsercizioAdapter {
     public static void main(String[] args) {
-        // Crea la presa americana (adaptee, fornita da un fornitore diverso)
+        // Creo una presa americana (oggetto preesistente, incompatibile)
         AmericanSocket americanSocket = new AmericanSocket();
 
-        // Crea l'adapter che permette di collegare la presa americana a una spina europea
+        // Creo un adapter per adattare la presa americana a standard europeo
         EuropeanSocket adapter = new SocketAdapter(americanSocket);
 
-        // Crea un dispositivo europeo, ma lo collega tramite l'adapter
-        EuropeanDevice device = new EuropeanDevice(adapter);
+        // Creo una lampada europea e la collego tramite l'adapter
+        EuropeanLamp lamp = new EuropeanLamp(adapter);
 
-        // Accende il dispositivo: l'adapter si occupa della "conversione"
-        device.powerOn();
+        // Accendo la lampada: tutto funziona, grazie all'adapter
+        lamp.turnOn();
     }
 }
