@@ -112,7 +112,7 @@ public class EsercizioFactoryMethod {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Per leggere input da tastiera
         VeicoloFactory factory = null; // Factory di riferimento, da impostare in base alla scelta utente
-
+        
         System.out.print("Quale veicolo vuoi creare? (auto/moto/camion): ");
         String tipo = scanner.nextLine().toLowerCase(); // Legge la scelta dell'utente e la converte in minuscolo
 
