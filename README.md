@@ -42,5 +42,10 @@ All'interno troverai esempi pratici che coprono i principali argomenti della pro
 📁 Lezione7/     --> Incapsulamento
 📁 Lezione8/     --> Eccezioni ed ereditarietà
 📁 Lezione9/     --> Polimorfismo
+📁 Lezione10/     --> Astrazione
+📁 Lezione11/     --> Inizio Design Pattern, Singleton
+📁 Lezione12/     --> Observer, Decorator
+📁 Lezione13/     --> Strategy, Facade
+📁 Lezione14/     --> Factory Method
 📄 README.md     --> Questo file
 
