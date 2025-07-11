@@ -64,7 +64,7 @@ class EuropeanLamp {
 }
 
 // Classe main: test pratico
-public class EsercizioAdapter {
+public class EsercizioAdapterFacile {
     public static void main(String[] args) {
         // Creo una presa americana
         AmericanSocket americanSocket = new AmericanSocket();

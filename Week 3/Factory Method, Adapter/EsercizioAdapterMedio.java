@@ -171,7 +171,7 @@ class UserManagementAdapter implements UserManagement {
 
 
 // menù interattivo per testare tutti i pattern insieme
-public class Esercizio2Adapter {
+public class EsercizioAdapterMedio {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         LegacyUserSystem legacySystem = new LegacyUserSystem();
