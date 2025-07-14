@@ -254,7 +254,7 @@ class ServizioNotifiche {
 
 // MENU - FACADE
 // La classe principale funge da Facade centralizzando tutto il flusso dell'applicazione
-public class EsercizioRecap {
+public class Esercizio2Recap {
     // Scanner per input da tastiera
     private static Scanner scanner = new Scanner(System.in);
     // Fabbrica per creare metodi di pagamento (pattern Factory)
