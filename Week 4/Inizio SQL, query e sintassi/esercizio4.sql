@@ -58,3 +58,5 @@ WHERE eta BETWEEN 30 AND 40;
 SELECT *
 FROM world.clienti
 WHERE citta LIKE '%roma%' OR citta LIKE '%ROMA%' OR citta LIKE '%Roma%' OR citta LIKE '%RoMa%'     
+
+
