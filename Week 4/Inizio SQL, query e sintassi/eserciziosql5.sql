@@ -50,3 +50,36 @@ LEFT JOIN world.ordini o ON c.id = o.id_cliente;
 SELECT c.nome AS NomeCliente, o.data_ordine, o.importo
 FROM world.clienti c
 RIGHT JOIN world.ordini o ON c.id = o.id_cliente;
+--
+-- Elenca i clienti attivi, cioè quelli che hanno effettuato almeno un ordine, mostrando per ciascuno:
+-- Nome del cliente
+-- Totale ordini effettuati
+-- Somma totale degli importi spesi
+-- Elenca i clienti inattivi, cioè quelli che non hanno mai effettuato ordini, mostrando solo:
+-- Nome del cliente
+-- Città di residenza
+-- Individua gli ordini orfani, cioè ordini presenti in tabella ma senza un cliente valido associato (es. cliente cancellato), e mostra:
+-- ID dell’ordine
+-- Data dell’ordine
+-- Importo
+-- (Cliente = NULL)
+-- Requisiti tecnici:
+-- Per il punto 1: usa INNER JOIN.
+-- Per il punto 2: usa LEFT JOIN con condizione su IS NULL.
+-- Per il punto 3: usa RIGHT JOIN con condizione su IS NULL.
+
+SELECT c.nome AS NomeCliente, COUNT(o.id) AS TotaleOrdini, SUM(o.importo) AS SommaImporti
+FROM world.clienti c
+INNER JOIN world.ordini o ON c.id = o.id_cliente
+GROUP BY c.id, c.nome;
+
+SELECT c.nome AS NomeCliente,c.città AS CittaResidenza
+FROM world.clienti c
+LEFT JOIN world.ordini o ON c.id = o.id_cliente
+WHERE o.id IS NULL;
+
+SELECT o.id AS IdOrdine,o.data_ordine,o.importo
+FROM world.clienti c
+RIGHT JOIN world.ordini o ON c.id = o.id_cliente
+WHERE c.id IS NULL;
+
