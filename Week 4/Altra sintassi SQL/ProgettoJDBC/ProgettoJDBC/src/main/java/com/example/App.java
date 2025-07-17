@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/sakila"; // <-- Usa 'sakila' come DB
         String user = "root";      // Cambia se usi un altro utente
-        String password = "Root123!";      // Metti la password giusta
+        String password = "***";      // Metti la password giusta
 
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connessione riuscita!");
