@@ -1,76 +1,63 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Numeri;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
-@RequestMapping("/numeri") //endpoint
+@RequestMapping("/numeri")
 public class NumeriControllo {
 
-    private List<Numeri> numeri = new ArrayList<>();
+    private final List<Numeri> numeri = new ArrayList<>();
     private Long idCounter = 1L;
 
     // GET: Lista di numeri
     @GetMapping
-    public List<Numeri> getAll() {
-        return numeri;
+    public ResponseEntity<List<Numeri>> getAll() {
+        return ResponseEntity.ok(numeri);
     }
 
-    /* 
     // GET: Somma totale dei numeri
     @GetMapping("/somma")
-    public double getSomma() {
-        return numeri.stream()
-                .mapToDouble(Numeri::getValore)
-                .sum();
-    }
-    */
-    @GetMapping("/somma")
-    public double getSomma() {
+    public ResponseEntity<Double> getSomma() {
         double somma = 0;
         for (Numeri n : numeri) {
             somma += n.getValore();
         }
-        return somma;
+        return ResponseEntity.ok(somma);
     }
 
     // POST: Aggiungi un nuovo numero
     @PostMapping
-    public Numeri aggiungi(@RequestBody Numeri nuovo) {
+    public ResponseEntity<Numeri> aggiungi(@RequestBody Numeri nuovo) {
         nuovo.setId(idCounter++);
         numeri.add(nuovo);
-        return nuovo;
-    }
-    /* 
-    // DELETE: Rimuovi per id
-    @DeleteMapping("/{id}")
-    public String elimina(@PathVariable Long id) {
-        boolean removed = numeri.removeIf(n -> n.getId().equals(id));
-        return removed ? "Numero eliminato con successo." : "Numero non trovato.";
-    }
-    */
-    @DeleteMapping("/{id}")
-    public String elimina(@PathVariable Long id) {
-        for (int i = 0; i < numeri.size(); i++) {
-            if (numeri.get(i).getId().equals(id)) { //prende il numero alla posizione i (numeri.get(i)), prende l’ID (getId()) e verifica uguaglianza
-                numeri.remove(i); // rimuove il numero trovato
-                return "Numero eliminato con successo.";
-            }
-        }
-        return "Numero non trovato.";
+        return ResponseEntity.status(201).body(nuovo); // 201 Created
     }
 
-    //aggiornamento
+    // DELETE: Rimuovi per id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> elimina(@PathVariable Long id) {
+        for (int i = 0; i < numeri.size(); i++) {
+            if (numeri.get(i).getId().equals(id)) {
+                numeri.remove(i);
+                return ResponseEntity.ok("Numero eliminato con successo.");
+            }
+        }
+        return ResponseEntity.status(404).body("Numero non trovato.");
+    }
+
+    // PUT: Aggiorna valore di un numero per id
     @PutMapping("/{id}")
-    public String aggiorna(@PathVariable Long id, @RequestBody Numeri modificato) {
+    public ResponseEntity<String> aggiorna(@PathVariable Long id, @RequestBody Numeri modificato) {
         for (Numeri n : numeri) {
             if (n.getId().equals(id)) {
                 n.setValore(modificato.getValore());
-                return "Numero aggiornato con successo.";
+                return ResponseEntity.ok("Numero aggiornato con successo.");
             }
         }
-        return "Numero non trovato.";
+        return ResponseEntity.status(404).body("Numero non trovato.");
     }
 }
