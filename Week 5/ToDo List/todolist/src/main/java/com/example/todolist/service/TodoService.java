@@ -1,38 +1,51 @@
 package com.example.todolist.service;
 
-import com.example.todolist.model.Todo;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import com.example.todolist.model.Todo;
+import com.example.todolist.repository.TodoRepository;
 
 @Service
 public class TodoService {
-    private final List<Todo> todos = new ArrayList<>();
-    private Long idCounter = 1L;
+
+
+    private final TodoRepository repo;
+
+    public TodoService(TodoRepository repo) {
+    this.repo = repo;
+    }
 
     public List<Todo> getAll() {
-        return todos;
-    }
+        List<Todo> lista = new ArrayList<>();
+        repo.findAll().forEach(lista::add);
+        return lista;
+        }
 
     public Optional<Todo> getById(Long id) {
-        return todos.stream().filter(t -> t.getId().equals(id)).findFirst();
+        return repo.findById(id);
     }
 
-    public Todo create(Todo nuovo) {
-        nuovo.setId(idCounter++);
-        todos.add(nuovo);
-        return nuovo;
+   public Todo create(Todo nuovo) {
+        return repo.save(nuovo);
     }
 
     public Optional<Todo> update(Long id, Todo modificato) {
-        return getById(id).map(todo -> {
-        todo.setDescrizione(modificato.getDescrizione());
-        todo.setCompletato(modificato.isCompletato());
-        return todo;
+        return repo.findById(id).map(t -> {
+        t.setDescrizione(modificato.getDescrizione());
+        t.setCompletato(modificato.isCompletato());
+        return repo.save(t);
         });
     }
 
     public boolean delete(Long id) {
-        return todos.removeIf(t -> t.getId().equals(id));
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
