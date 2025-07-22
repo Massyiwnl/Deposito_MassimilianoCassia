@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -22,22 +20,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "todo")
-public class Todo {
+@Table(name = "utenti")
+public class Utente {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
 @Column(nullable = false)
-private String descrizione;
+private String nome;
 
-private boolean completato;
-
-@ManyToOne
-@JoinColumn(name = "utente_id", nullable = false)
-private Utente utente;
-
-@OneToMany(mappedBy = "todo", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Commento> commenti;
+@OneToMany(mappedBy = "utente", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Todo> todoList;
 }

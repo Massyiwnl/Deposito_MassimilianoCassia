@@ -1,51 +1,37 @@
 package com.example.todolist.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.todolist.model.Todo;
 import com.example.todolist.repository.TodoRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class TodoService {
 
+private final TodoRepository todoRepository;
 
-    private final TodoRepository repo;
+public List<Todo> findAll() {
+return todoRepository.findAll();
+}
 
-    public TodoService(TodoRepository repo) {
-    this.repo = repo;
-    }
+public List<Todo> findByUtenteId(Long utenteId) {
+return todoRepository.findByUtenteId(utenteId);
+}
 
-    public List<Todo> getAll() {
-        List<Todo> lista = new ArrayList<>();
-        repo.findAll().forEach(lista::add);
-        return lista;
-        }
+public Todo findById(Long id) {
+return todoRepository.findById(id).orElseThrow(() -> new RuntimeException("Todo non trovato"));
+}
 
-    public Optional<Todo> getById(Long id) {
-        return repo.findById(id);
-    }
+public Todo save(Todo todo) {
+return todoRepository.save(todo);
+}
 
-   public Todo create(Todo nuovo) {
-        return repo.save(nuovo);
-    }
-
-    public Optional<Todo> update(Long id, Todo modificato) {
-        return repo.findById(id).map(t -> {
-        t.setDescrizione(modificato.getDescrizione());
-        t.setCompletato(modificato.isCompletato());
-        return repo.save(t);
-        });
-    }
-
-    public boolean delete(Long id) {
-        if (repo.existsById(id)) {
-            repo.deleteById(id);
-            return true;
-        }
-        return false;
-    }
+public void delete(Long id) {
+todoRepository.deleteById(id);
+}
 }
