@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.libreria.model.Autore;
 import com.example.libreria.service.AutoreService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/autori")
@@ -34,7 +37,13 @@ public class AutoreController {
     }
 
     @PostMapping
-    public Autore create(@RequestBody Autore autore) {
+    public Autore create(@RequestBody @Valid Autore autore) {
+        return autoreService.save(autore);
+    }
+
+    @PutMapping("/{id}")
+    public Autore update(@PathVariable Long id, @RequestBody @Valid Autore autore) {
+        autore.setId(id);
         return autoreService.save(autore);
     }
 

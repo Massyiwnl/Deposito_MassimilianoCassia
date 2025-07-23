@@ -12,16 +12,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
 @Table(name = "autori")
 public class Autore {
 
@@ -29,6 +35,8 @@ public class Autore {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Il nome dell'autore è obbligatorio")
+    @Size(min = 2, max = 50, message = "Il nome deve essere tra 2 e 50 caratteri")
     @Column(nullable = false)
     private String nome;
 

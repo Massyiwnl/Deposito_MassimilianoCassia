@@ -14,9 +14,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -24,6 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
 @Table(name = "libri")
 public class Libro {
 
@@ -31,9 +36,12 @@ public class Libro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Il titolo del libro è obbligatorio")
+    @Size(min = 1, max = 100, message = "Il titolo deve essere tra 1 e 100 caratteri")
     @Column(nullable = false)
     private String titolo;
 
+    @NotNull(message = "L'autore è obbligatorio")
     @ManyToOne
     @JoinColumn(name = "autore_id", nullable = false)
     private Autore autore;
@@ -42,3 +50,4 @@ public class Libro {
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Recensione> recensioni;
 }
+
