@@ -2,6 +2,8 @@ package com.example.todolist.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,5 +41,6 @@ private boolean completato;
 private Utente utente;
 
 @OneToMany(mappedBy = "todo", cascade = CascadeType.ALL, orphanRemoval = true)
+@JsonIgnore //evita loop
 private List<Commento> commenti;
 }
